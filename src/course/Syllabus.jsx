@@ -45,6 +45,7 @@ const Syllabus = () => {
             color="white"
             sx={{
               backgroundColor: "#ffffff",
+            
             }}
           />{" "}
         </div>

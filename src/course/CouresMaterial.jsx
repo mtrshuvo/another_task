@@ -47,7 +47,7 @@ const contents = [
 
 ]
 const CouresMaterial = (props) => {
-    const {width} = props;
+    
     return (
         <div className='sticky__sidebar'>
             <div className='sticky__sidebar__wrapper'>
@@ -66,13 +66,13 @@ const CouresMaterial = (props) => {
                     <span>কোর্সের মূল্য</span>
                     <span className='course__amount'>৳ ৭,০০০</span>
                 </div>
-                <div className='sticky__btn'>
-                    <div>
-                    <Link role={"button"}>এখনই ভর্তি হোন</Link>
-                    </div>
-                    <div>
+                <div className='sticky__btn row'>
+                    <span>
+                    <Link  role={"button"}>এখনই ভর্তি হোন</Link>
+                    </span>
+                    <span >
                     <Link role={"button"}>ডাউনলোড সিলেবাস</Link>
-                    </div>
+                    </span>
                 </div>
             </div>
         </div>

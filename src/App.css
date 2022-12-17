@@ -90,7 +90,7 @@ main{
   background-color:#E1EAF1;
   /* min-width: 100%; */
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: all 0.3s ease;
 }
 .card__s:hover{
@@ -98,7 +98,8 @@ main{
 }
 .card__header{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  gap: 1rem;
   align-items: center;
   padding: 1rem;
 }
@@ -110,6 +111,7 @@ main{
   width: 100%;
   height: auto;
   border-radius: 50%;
+  padding: .6rem;
 }
 
 .card__text{
@@ -161,18 +163,22 @@ main{
 }
 
 
-
-.input__fields button{
+.input__fieldss{
+padding: .4rem;
+}
+.input__fieldss button{
   color: #333;
   background-color: #fff;
   border-color: #ccc;
-  width: 50%;
+  width:45%;
   text-transform: uppercase;
   word-spacing: 1px;
   font-size: 1rem;
-  padding: .8rem;
+  padding: .4rem;
   border: 1px solid rgb(101, 101, 101);
-  margin-left: 0;
+  /* margin-left: 0; */
+  cursor: pointer;
+
 }
 
 
@@ -195,7 +201,7 @@ main{
   font-size: 1.1rem;
 }
 .gutter__div{
-  margin: 1.5rem 0;
+  margin: 1.3rem 0;
 }
 
 
@@ -331,8 +337,67 @@ main{
 
 }
 
+/************************* instructor **********************/
+.instructor__wrapper{
+  background-color: #527f87;
+  border-radius: 5px;
 
+}
+.course__instructor{
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  padding: 2rem;
+  border-radius: 5px;
+  /* border: solid; */
+  border-radius: 1px solid;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 
+  margin-bottom: 1px ;
+  
+
+}
+.instruuctor__header{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+.instruuctor__image{
+  width: 120px;
+  height:120px;
+  border: 1.5px solid;
+  display: flex;
+  border-radius: 50%;
+
+}
+.instruuctor__image img{
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+
+}
+
+.instruuctor__name{}
+.instruuctor__name h2{
+  /* font-size: 2rem; */
+}
+.instruuctor__name p{
+  font-weight: 500;
+}
+.insturctor__details{
+  padding: 2rem;
+
+  background-color: #FFFFFF;
+  /* border-radius: 1px solid; */
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+}
+.insturctor__details p{
+  text-align: justify;
+}
 
 /********************************************* sticky sidebar *******************************/
 .sticky__sidebar__section{
@@ -340,7 +405,7 @@ main{
   background-color: #fa3490;
   border-radius: 10px;
   position: sticky;
-  height: 32rem;
+  height: 30rem;
   top: 1rem;
   right: 10%; 
   z-index: 999;
@@ -391,7 +456,7 @@ main{
   text-align: center;
   display: flex;
   justify-content: space-around;
-  width: 95%;
+  width: 98%;
   border-radius: 5px;
 }
 .coures__pricing > span{
@@ -403,6 +468,37 @@ main{
   font-weight: 800;
 }
 
+.sticky__btn{
+  /* padding: 1rem 0; */
+  margin-top: 1rem;
+  display: inline-flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.sticky__btn span{
+ width: 48%;
+ display: block;
+
+}
+.sticky__btn > a{
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  display: block;
+
+}
+
+.sticky__btn  a{
+  background-color: #f174bd;
+  border-radius: 10px;
+  color: black;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  padding: 1rem 0;
+  text-align: center;
+}
 .div__overlay{
   width: 100vw;
   height: 65vh;
@@ -410,33 +506,6 @@ main{
   position: absolute;
   left: 0;
   z-index: -1;
-}
-.sticky__btn{
-  padding: 1rem 0;
-  margin-top: 1rem;
-  display: flex;
-  justify-content: space-around;
-  /* border: 1px solid; */
-  width: 100%;
-}
-.sticky__btn> div{
- /* max-width: 50% !important; */
-}
-.sticky__btn > a{
-  cursor: pointer;
-  /* width: 100%; */
-  font-size: 1rem;
-}
-
-.sticky__btn  a{
-  background-color: #f174bd;
-  padding: 1rem;
-  border-radius: 10px;
-  color: black;
-  font-size: 1rem;
-  font-weight: 600;
-  /* max-width: 100%; */
-  cursor: pointer;
 }
 .sticky__bottom{
   position: sticky;
@@ -486,6 +555,9 @@ footer{
 .MuiTabs-indicator{
   display: none;
 }
+.accodion [aria-expanded='true'] p, .accodion [aria-expanded='true'] svg{
+  color: red;
+}
 
 
 .btn__amount{
@@ -510,7 +582,7 @@ footer{
   
 
   .sticky__sidebar__section{
-    height: 41rem;
+    height: 40rem;
 
   } 
   .sticky__btn{
@@ -521,7 +593,8 @@ footer{
     align-items: center;
     
   }
-  .sticky__btn> div{
+ 
+  .sticky__btn> span{
     width: 100%;
     display: block;
     margin-top: 1rem;
@@ -534,7 +607,7 @@ footer{
 }
 @media only screen and (max-width: 1150px) {
   .sticky__sidebar__section{
-    height: 42rem;
+    height: 41rem;
 
   } 
   .sticky__btn{
@@ -542,7 +615,7 @@ footer{
   }
 }@media only screen and (max-width: 1050px) {
   .sticky__sidebar__section{
-    height: 42rem;
+    /* height: 41rem; */
 
   } 
 }@media only screen and (max-width: 950px) {
@@ -552,7 +625,7 @@ footer{
   } 
 }@media only screen and (max-width: 850px) {
   .sticky__sidebar__section{
-    height: 43.5rem;
+    /* height: 42rem; */
 
   } 
   .sticky__content{
@@ -575,7 +648,9 @@ footer{
 
 
 @media only screen and (max-width: 769px) {
-  
+  main{
+    width: 80%;
+  }
   .course__top__section{
     max-width: 100%;
   }
@@ -593,6 +668,9 @@ footer{
   }
   .sticky__sidebar__section{
     max-height: 50%;
+  }
+  .coures__pricing{
+    width: 100%;
   }
 }
 
@@ -676,6 +754,9 @@ footer{
   .card__text{
     text-align: center;
   }
+  .card__header{
+    gap: 0;
+  }
   .priceing{
     /* background-color: #c5c13e; */
     display: none;
@@ -694,5 +775,11 @@ footer{
   }
   .sticky__bottom{
     height: auto;
+  }
+  .input__fieldss button{
+    width: 80%;
+  }
+  .instruuctor__header{
+    flex-direction: column;
   }
 }

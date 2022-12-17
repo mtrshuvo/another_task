@@ -15,8 +15,9 @@ import WithCarousel from "./WithCarousel";
 import CouresMaterial from "./CouresMaterial";
 import { Link } from "react-router-dom";
 import BottomSticky from "./BottomSticky";
+import { Button } from "@mui/material";
 // import "bootstrap/dist/css/bootstrap.min.css"
-
+import oneImg from "../images/one.jpg"
 
 
 let selectedValues = [
@@ -67,19 +68,19 @@ function Main() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-};
+  };
 
+  //
+  useEffect(() => {
 
-useEffect(()=> {
- 
-  function resizewidth(){
-    setIsTabWindow(window.innerWidth)
-    console.log(window.innerWidth);
-  }
- 
-window.addEventListener('resize', resizewidth)
-return ()=> window.removeEventListener('resize',resizewidth)
-})
+    function resizewidth() {
+      setIsTabWindow(window.innerWidth)
+      console.log(window.innerWidth);
+    }
+
+    window.addEventListener('resize', resizewidth)
+    return () => window.removeEventListener('resize', resizewidth)
+  })
 
   return (
     <>
@@ -119,182 +120,249 @@ return ()=> window.removeEventListener('resize',resizewidth)
 
             <div className="" style={{}}>
 
-              {isTabWindow > 768 ?(
+              {isTabWindow > 768 ? (
 
-              <Box className="box__class_tab">
-                <Tabs
-                  className="tabs"
+                <Box className="box__class_tab">
+                  <Tabs
+                    className="tabs"
 
-                  variant="fullwidth"
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-evenly",
-                    backgroundColor: "gray",
-                    borderRadius: '10px',
-                    "& button": { fontSize: "1rem", width: "25%" },
-                    "& button:hover": {
-                      backgroundColor: "rgb(228, 62, 162)",
-                      color: "white",
-                    },
-                    
-                  }}
-                  value={value}
-                  onChange={handleChange}
-                  aria-label="basic tabs example"
-                >
-                    <Tab id="tab" label="কোর্সের বিস্তারিত" {...a11yProps(0)}/>
+                    variant="fullwidth"
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-evenly",
+                      backgroundColor: "gray",
+                      borderRadius: '10px',
+                      "& button": { fontSize: "1rem", width: "25%" },
+                      "& button:hover": {
+                        backgroundColor: "rgb(228, 62, 162)",
+                        color: "white",
+                      },
+
+                    }}
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="basic tabs example"
+                  >
+                    <Tab id="tab" label="কোর্সের বিস্তারিত" {...a11yProps(0)} />
                     <Tab className="tab" label="সিলেবাস" {...a11yProps(1)} />
                     <Tab className="tab" label="কেন স্পেশাল" {...a11yProps(2)} />
-                    <Tab className="tab" label="প্রজেক্ট ও অ্যাসাইনমেন্ট" {...a11yProps(2)}/>
-                </Tabs>
-                <TabPanel value={value} index={0}>
-                  {/* course description */}
-                  <CourseDescription />
-                </TabPanel>
-                <TabPanel value={value} index={1}>
-                  {/* syllabus */}
+                    <Tab className="tab" label="প্রজেক্ট ও অ্যাসাইনমেন্ট" {...a11yProps(2)} />
+                  </Tabs>
+                  <TabPanel value={value} index={0}>
+                    {/* course description */}
+                    <CourseDescription />
+                  </TabPanel>
+                  <TabPanel value={value} index={1}>
+                    {/* syllabus */}
 
-                  <Syllabus />
-                </TabPanel>
-                <TabPanel value={value} index={2}>
-                  {/* Why Specials */}
+                    <Syllabus />
+                  </TabPanel>
+                  <TabPanel value={value} index={2}>
+                    {/* Why Specials */}
 
-                  <WhySpecials />
-                </TabPanel>
-                <TabPanel value={value} index={3}>
-                  {/* project assignment */}
+                    <WhySpecials />
+                  </TabPanel>
+                  <TabPanel value={value} index={3}>
+                    {/* project assignment */}
 
-                  <ProjectAssignments />
-                </TabPanel>
-                <div className="gutter__div"></div>
-                <div className="email__subcription">
-                  <p>পূর্ণাঙ্গ সিলেবাস ইমেইলে পেতে নিচের ফর্মটি পূরণ করুন</p>
+                    <ProjectAssignments />
+                  </TabPanel>
                   <div className="gutter__div"></div>
-                  <hr />
-                  <p>
+                  <div className="email__subcription" style={{marginTop: "10rem"}}>
+                    <p>পূর্ণাঙ্গ সিলেবাস ইমেইলে পেতে নিচের ফর্মটি পূরণ করুন</p>
+                    <div className="gutter__div"></div>
+                    <hr />
+                    <p>
                       নিচের ফর্মটি পূরণ করলে আপনার ইমেইলে এ ক্যারিয়ার ট্র্যাক
                       প্রোগ্রামের পুরো সিলেবাস পাঠিয়ে দেবো আমরা! সেখান থেকে প্রয়োজনীয়
                       সব তথ্য পেয়ে যাবেন।
                     </p>
-                  <div className="form__sub">
-                    <div className="form__contrl">
-                      <div className="input__fields">
-                        <input type={"text"} placeholder="আপনার নাম" />
-                      </div>
-                      <div className="input__fields">
-                        <input type={"text"} placeholder="আপনার ফোন নাম্বার" />
-                      </div>
-                      <div className="input__fields">
-                        <select>
-                          <option disabled selected>আপনি একজন –</option>
-                          {selectedValues.map(v => <option>{v}</option>)}
-                        </select>
-                      </div>
-                      <div className="input__fields">
-                        <input type={"email"} placeholder="আপনার ইমেইল" />
-                      </div>
+                    <div className="form__sub">
+                      <div className="form__contrl">
+                        <div className="input__fields">
+                          <input type={"text"} placeholder="আপনার নাম" />
+                        </div>
+                        <div className="input__fields">
+                          <input type={"text"} placeholder="আপনার ফোন নাম্বার" />
+                        </div>
+                        <div className="input__fields">
+                          <select>
+                            <option disabled selected>আপনি একজন –</option>
+                            {selectedValues.map(v => <option>{v}</option>)}
+                          </select>
+                        </div>
+                        <div className="input__fields">
+                          <input type={"email"} placeholder="আপনার ইমেইল" />
+                        </div>
 
-                      <div className="input__fields">
+
+                      </div>
+                      <div className="input__fieldss">
                         <button type="button" role={'button'} >Email Me The Syllabus</button>
                       </div>
+                      <div className="gutter__div"></div>
 
                     </div>
-                    
                   </div>
-                </div>
 
-                <section className="career__track" >
-                  <div className="career__track__div">
-                    <div className="career__track__wrapper">
-                      <h2>ক্যারিয়ার ট্র্যাকের শিক্ষার্থীরা কী বলছেন?</h2>
-                      <div className="comment__slider">
-                        <WithCarousel />
-                      </div>
-                      <div className="gutter__div"></div>
-                      <div className="faq__div">
-                        <div className="faq__div__wrapper">
-                          <h2>Frequently Answered Questions</h2>
-                          <SimpleAccordian />
+                  <section className="career__track" >
+                    <div className="career__track__div">
+                      <div className="career__track__wrapper">
+                        <h2>ক্যারিয়ার ট্র্যাকের শিক্ষার্থীরা কী বলছেন?</h2>
+                        <div className="comment__slider">
+                          <WithCarousel />
+                        </div>
+                        <div className="gutter__div"></div>
+                        <div className="faq__div">
+                          <div className="faq__div__wrapper">
+                            <h2>Frequently Answered Questions</h2>
+                            <SimpleAccordian />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </section>
+                  </section>
 
-
-              </Box>
-
-              ): (
-                <div className="minified__pannel">
-                <div><CourseDescription /></div>
-                <div><Syllabus /></div>
-                <div><WhySpecials /></div>
-                <div><ProjectAssignments /></div>
-                 <div>
-                 <div className="gutter__div"></div>
-                <div className="email__subcription">
-                  <p>পূর্ণাঙ্গ সিলেবাস ইমেইলে পেতে নিচের ফর্মটি পূরণ করুন</p>
                   <div className="gutter__div"></div>
-                  <hr />
-                  <p>
-                      নিচের ফর্মটি পূরণ করলে আপনার ইমেইলে এ ক্যারিয়ার ট্র্যাক
-                      প্রোগ্রামের পুরো সিলেবাস পাঠিয়ে দেবো আমরা! সেখান থেকে প্রয়োজনীয়
-                      সব তথ্য পেয়ে যাবেন।
-                    </p>
-                  <div className="form__sub">
-                    <div className="form__contrl">
-                      <div className="input__fields">
-                        <input type={"text"} placeholder="আপনার নাম" />
-                      </div>
-                      <div className="input__fields">
-                        <input type={"text"} placeholder="আপনার ফোন নাম্বার" />
-                      </div>
-                      <div className="input__fields">
-                        <select>
-                          <option disabled selected>আপনি একজন –</option>
-                          {selectedValues.map(v => <option>{v}</option>)}
-                        </select>
-                      </div>
-                      <div className="input__fields">
-                        <input type={"email"} placeholder="আপনার ইমেইল" />
-                      </div>
 
-                      <div className="input__fields">
-                        <button >Email Me The Syllabus</button>
-                      </div>
+                  <section className="career__track">
+                    <div className="instructor__wrapper">
 
+                      <div className="course__instructor">
+                        <div className="instruuctor__header">
+                          <div className="instruuctor__image">
+                            <img src={oneImg} alt="instructor__name" />
+                          </div>
+                          <div className="instruuctor__name">
+                            <h2>John Doe</h2>
+                            <p>Instructor at XYZ</p>
+                          </div>
+
+
+                        </div>
+
+                        {/* <div className="gutter__div"></div> */}
+                      </div>
+                      <div className="insturctor__details">
+                        <p>
+                          Software Developer at Markopolo.ai, having more than
+                          three years of experience in full stack web
+                          development. He is the author of some of the top
+                          rated programming & web development courses on
+                          Bohubrihi. Simanta is a Computer Science graduate of
+                          Chittagong University of Engineering & Technology
+                          (CUET)
+                        </p>
+                      </div>
                     </div>
-                    
-                  </div>
-                </div>
-                 <section className="career__track" >
-                  <div className="career__track__div">
-                    <div className="career__track__wrapper">
-                      <h2>ক্যারিয়ার ট্র্যাকের শিক্ষার্থীরা কী বলছেন?</h2>
-                      <div className="gutter__div"></div>
-                      <div className="comment__slider">
-                        <WithCarousel />
-                      </div>
-                      <div className="gutter__div"></div>
-                      <div className="faq__div">
-                        <div className="faq__div__wrapper">
-                          <h2>Frequently Answered Questions</h2>
-                      <div className="gutter__div"></div>
+                  </section>
 
-                          <SimpleAccordian />
+                </Box>
+
+              ) : (
+                <div className="minified__pannel">
+                  <div><CourseDescription /></div>
+                  <div><Syllabus /></div>
+                  <div><WhySpecials /></div>
+                  <div><ProjectAssignments /></div>
+                  <div>
+                    <div className="gutter__div"></div>
+                    <div className="email__subcription">
+                      <p>পূর্ণাঙ্গ সিলেবাস ইমেইলে পেতে নিচের ফর্মটি পূরণ করুন</p>
+                      <div className="gutter__div"></div>
+                      <hr />
+                      <p>
+                        নিচের ফর্মটি পূরণ করলে আপনার ইমেইলে এ ক্যারিয়ার ট্র্যাক
+                        প্রোগ্রামের পুরো সিলেবাস পাঠিয়ে দেবো আমরা! সেখান থেকে প্রয়োজনীয়
+                        সব তথ্য পেয়ে যাবেন।
+                      </p>
+                      <div className="form__sub">
+                        <div className="form__contrl">
+                          <div className="input__fields">
+                            <input type={"text"} placeholder="আপনার নাম" />
+                          </div>
+                          <div className="input__fields">
+                            <input type={"text"} placeholder="আপনার ফোন নাম্বার" />
+                          </div>
+                          <div className="input__fields">
+                            <select>
+                              <option disabled selected>আপনি একজন –</option>
+                              {selectedValues.map(v => <option>{v}</option>)}
+                            </select>
+                          </div>
+                          <div className="input__fields">
+                            <input type={"email"} placeholder="আপনার ইমেইল" />
+                          </div>
+
+
+                        </div>
+                        <div className="input__fieldss">
+                          <button type="button" role={'button'} >Email Me The Syllabus</button>
+                        </div>
+
+                        <div className="gutter__div"></div>
+                      </div>
+                    </div>
+                    <section className="career__track" >
+                      <div className="career__track__div">
+                        <div className="career__track__wrapper">
+                          <h2>ক্যারিয়ার ট্র্যাকের শিক্ষার্থীরা কী বলছেন?</h2>
+                          <div className="gutter__div"></div>
+                          <div className="comment__slider">
+                            <WithCarousel />
+                          </div>
+                          <div className="gutter__div"></div>
+                          <div className="faq__div">
+                            <div className="faq__div__wrapper">
+                              <h2>Frequently Answered Questions</h2>
+                              <div className="gutter__div"></div>
+
+                              <SimpleAccordian />
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </section>
+                    <div className="gutter__div"></div>
+
+                    <section className="career__track">
+                      <div className="instructor__wrapper">
+
+                        <div className="course__instructor">
+                          <div className="instruuctor__header">
+                            <div className="instruuctor__image">
+                              <img src={oneImg} alt="instructor__name" />
+                            </div>
+                            <div className="instruuctor__name">
+                              <h2>John Doe</h2>
+                              <p>Instructor at XYZ</p>
+                            </div>
+
+
+                          </div>
+
+                          {/* <div className="gutter__div"></div> */}
+                        </div>
+                        <div className="insturctor__details">
+                          <p>
+                            Software Developer at Markopolo.ai, having more than
+                            three years of experience in full stack web
+                            development. He is the author of some of the top
+                            rated programming & web development courses on
+                            Bohubrihi. Simanta is a Computer Science graduate of
+                            Chittagong University of Engineering & Technology
+                            (CUET)
+                          </p>
+                        </div>
+                      </div>
+                    </section>
                   </div>
-                </section>
-                 </div>
                 </div>
               )}
             </div>
-
           </div>
         </section>
-        {isTabWindow > 768 && (<aside className="sticky__sidebar__section" 
+        {isTabWindow > 768 && (<aside className="sticky__sidebar__section"
         // style={{
         //   maxHeight: `${isTabWindow < 1250? parseInt(isTabWindow/50)*3 + 32 : 32}rem`,
         // }}
@@ -303,10 +371,9 @@ return ()=> window.removeEventListener('resize',resizewidth)
         </aside>)}
 
       </main>
-        {isTabWindow <= 768 && (
-          <BottomSticky />
-        )}
-
+      {isTabWindow <= 768 && (
+        <BottomSticky />
+      )}
 
 
 

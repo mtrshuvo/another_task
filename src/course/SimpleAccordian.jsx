@@ -32,11 +32,11 @@ export default function SimpleAccordian() {
   };
 
   return (
-    <div>
+    <div className='accodion'>
         {contents.map((c, i) => {
             return <>
             <Accordion 
-            style={{border: "none"}}
+            style={{border: "none", backgroundColor: "#F2F5F9"}}
             disableGutters={"true"} expanded={expanded === `panel${i}`} onChange={handleChange( `panel${i}`)}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -45,10 +45,10 @@ export default function SimpleAccordian() {
           
         >
           
-          <Typography sx={{ color: 'text.secondary', border: "none" }}>{c.title}</Typography>
+          <Typography sx={{ color: 'text.secondary', border: "none", fontWeight: "500", }}>{c.title}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography sx={{lineHeight: "2rem" }}>
            {c.details}
           </Typography>
         </AccordionDetails>
