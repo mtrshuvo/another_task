@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+/* styles.css */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.circle-controller {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #3498db;
+  cursor: pointer;
+  overflow: hidden; /* Added this to prevent handle from going outside the controller */
+}
+
+.circle-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+  </style>
+</head>
+<body>
+    <div class="circle-controller">
+        <div class="circle-handle"></div>
+      </div>
+  <script >
+// script.js
+const controller = document.querySelector('.circle-controller');
+const handle = document.querySelector('.circle-handle');
+const controllerWidth = controller.clientWidth;
+const controllerHeight = controller.clientHeight;
+const handleWidth = handle.clientWidth;
+const handleHeight = handle.clientHeight;
+
+let isDragging = false;
+let initialMouseX, initialMouseY, initialHandleX, initialHandleY;
+
+controller.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  initialMouseX = e.clientX;
+  initialMouseY = e.clientY;
+  initialHandleX = parseFloat(handle.style.left) || 0;
+  initialHandleY = parseFloat(handle.style.top) || 0;
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    const offsetX = e.clientX - initialMouseX;
+    const offsetY = e.clientY - initialMouseY;
+    const newHandleX = initialHandleX + offsetX;
+    const newHandleY = initialHandleY + offsetY;
+
+    // Limit the handle movement within the controller boundaries
+    const maxDistance = (controllerWidth - handleWidth) / 2;
+    const distance = Math.sqrt(newHandleX ** 2 + newHandleY ** 2);
+    if (distance <= maxDistance) {
+      handle.style.left = newHandleX + 'px';
+      handle.style.top = newHandleY + 'px';
+    }
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+
+
+
+  </script>
+</body>
+</html>
